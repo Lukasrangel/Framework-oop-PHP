@@ -123,6 +123,29 @@ class Painel {
         return $sql->rowCount();
     }
 
+    public static function pegaTudo($tabela, $where = ''){
+        $sql = Mysql::conectar()->prepare("SELECT * FROM `$tabela` " . $where);
+        $sql->execute();
+        return $sql->fetchAll();
+    }
+
+    public static function insertDB($arr,$tabela){
+        $campos = count($arr);
+        $query_campos = array();
+
+        for($i = 1; $i <= $campos; $i++){
+            array_push($query_campos,'?');
+        }
+        $query_campos = implode(",",$query_campos);
+        
+        $sql = Mysql::conectar()->prepare("INSERT INTO `$tabela` VALUES (null, $query_campos)");
+        $sql->execute($arr);
+        if($sql->rowCount() > 0){
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
 
 
