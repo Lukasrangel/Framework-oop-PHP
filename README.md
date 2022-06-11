@@ -3,6 +3,22 @@ Mini Framework orientado a objetos em PHP
 
 #Documentação
 
+Painel::pegaTudo($tabela, $where)
+
+puxa informações do banco de dados, a variavel $tabela específica a tablea a buscar,
+a váriavel where é opcional, se não passada pega todas as informações, se passada 
+deve seguir a estrutura da query, exemplo:
+
+$where = 'where id = 2 order by id desc';
+
+**************
+
+Painel::insertDB($arr,$tabela)
+
+Insere dados no banco, o parametro $arr é um array com os dados, 
+o segundo parâmetro é o nome da tabela;
+
+
 **************
 
 Painel::generateSlug($str) 
